@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+    static:
+        build: ./Static_HTTP_server
+        image: static_server:latest
+        ports:
+            - "3005:80"
+        #volumes:
+        #    - ./Static_HTTP_server/www:/usr/share/nginx/html
+        #    - ./Static_HTTP_server/nginx.conf:/etc/nginx/nginx.conf
+    dynamic:
+        build: ./expressJs
+        image: dynamic_server:latest
+        ports:
+            - "3006:80"
+        command:
+            - "node /opt/app/index.js"
+        #volumes:
+        #    - ./expressJs/src:/opt/app
+    reverseProxy:
+        build: ./reverse_proxy
+        image: reverse_proxy:latest
+        ports:
+            - "8081:80"
+        #volumes:
+        #    - ./reverse_proxy/nginx:/etc/nginx/
