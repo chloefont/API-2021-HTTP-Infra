@@ -1,8 +1,23 @@
 const express = require("express");
 const app = express();
 
-app.get("/", function (req, res) {
-    res.send("Hello World");
+app.get("/", (req, res) => {
+    res.json(getTimeJson());
 });
 
-app.listen(3006);
+app.listen(3006, ()=>{
+    console.log("Server started")
+});
+
+
+function getTimeJson() {
+    var now = new Date();
+    return {
+        year: now.getFullYear(),
+        month: now.getMonth(),
+        day: now.getDay(),
+        hour: now.getHours(),
+        minutes: now.getMinutes(),
+        seconds: now.getSeconds()
+        };
+}

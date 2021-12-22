@@ -13,9 +13,7 @@ services:
         build: ./expressJs
         image: dynamic_server:latest
         ports:
-            - "3006:80"
-        command:
-            - "node /opt/app/index.js"
+            - "3006:3006"
         #volumes:
         #    - ./expressJs/src:/opt/app
     reverseProxy:
