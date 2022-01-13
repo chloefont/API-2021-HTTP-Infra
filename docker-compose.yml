@@ -6,8 +6,8 @@ services:
         image: static_server:latest
         ports:
             - "3005:80"
-        #volumes:
-        #    - ./Static_HTTP_server/www:/usr/share/nginx/html
+        volumes:
+            - ./Static_HTTP_server/www:/usr/share/nginx/html
         #    - ./Static_HTTP_server/nginx.conf:/etc/nginx/nginx.conf
     dynamic:
         build: ./expressJs

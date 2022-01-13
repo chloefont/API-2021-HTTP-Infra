@@ -1,24 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" text="text/css" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon site super beau que j'aime beaucoup à la folie à qui mieux mieux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
-    <h1>Bonjour à toi jeune entrepreneur !</h1>
-    <p>Tu te demandes quelle heure il est ?</p>
-    <h1 class="heure"></h1>
+    <div class='title'>
+        <h1>Bonjour à toi jeune entrepreneur !</h1>
+        <p>Tu te demandes quelle heure il est ?</p>
+    </div>
+    <div class="container">
+        <div class="element">
+            <h2 id="year"></h2>
+            <h4>YEAR</h4>
+        </div>
+        <div class="element">
+            <h2 id="month"></h2>
+            <h4>MONTH</h4>
+        </div>
+        <div class="element">
+            <h2 id="day"></h2>
+            <h4>DAY</h4>
+        </div>
+        <div class="element">
+            <h2 id="hour"></h2>
+            <h4>HOUR</h4>
+        </div>
+        <div class="element">
+            <h2 id="minute"></h2>
+            <h4>MINUTES</h4>
+        </div>
+        <div class="element">
+            <h2 id="second"></h2>
+            <h4>SECONDS</h4>
+        </div>
+    </div>
+
 </body>
 <script>
 
-    $.get("http://localhost:8081/express").done((data) => {
-        $(".heure").html(data);
-        console.log(data);
-    })
+    window.addEventListener('load', onReady)
 
+    function onReady() {
+        setInterval(() => {
+            $.getJSON("/express").done((data) => {
+                console.log("heure:", data);
+                $('#year').text(`${data.year}`);
+                $('#month').text(`${data.month}`);
+                $('#day').text(`${data.day}`);
+                $('#hour').text(`${data.hour}`);
+                $('#minute').text(`${data.minutes}`);
+                $('#second').text(`${data.seconds}`);
+            })
+        }, 1000);
+
+    }
+
+
+    //document.getElementsByClassName('.heure').innerHTML = coucou;
 
 </script>
+
 </html>
