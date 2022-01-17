@@ -5,6 +5,11 @@ app.get("/", (req, res) => {
     res.json(getTimeJson());
 });
 
+app.get("/id", (req, res) => {
+    console.log(process.env);
+    res.json({id:process.env.NO_SERVER});
+});
+
 app.listen(3006, ()=>{
     console.log("Server started")
 });
@@ -21,3 +26,4 @@ function getTimeJson() {
         seconds: now.getSeconds()
         };
 }
+

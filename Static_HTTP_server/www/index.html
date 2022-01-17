@@ -15,7 +15,7 @@
 
 <body>
     <div class='title'>
-        <h1>Bonjour à toi jeune entrepreneur !</h1>
+        <h1>Bienvenue sur le serveur <span id="no-server"></span> jeune entrepreneur !</h1>
         <p>Tu te demandes quelle heure il est ?</p>
     </div>
     <div class="container">
@@ -61,8 +61,11 @@
                 $('#minute').text(`${data.minutes}`);
                 $('#second').text(`${data.seconds}`);
             })
-        }, 1000);
 
+            $.getJSON("/express/id").done((data) => {
+                $('#no-server').text(`${data.id}`)
+            });
+        }, 1000);
     }
 
 
