@@ -1,5 +1,12 @@
 # API-2021-HTTP-Infra
 
+## Démarrer les serveurs
+
+Pour démarrer nos différents serveurs il est nécessaire d'avoir docker d'installé sur votre ordinateur.
+Ensuite il suffit de vous rentre dans le dossier racine et de lancer la commande docker compose up. Ce dernier va créer les images et lancer les containers.
+
+Une fois que tout est allumé vous pouvez vous rendre sur http://localhost:8081. Vous verrez ensuite une page vous affichant la date et l'heure du serveur.
+
 ## 1. STATIC HTML SERVER
 
 Pour servir notre fichier html nous avons décidé d'utiliser NGINX car ayant déjà utilisé Apache auparavant nous voulions apprendre quelque chose de nouveau.
