@@ -52,7 +52,7 @@
 
     function onReady() {
         setInterval(() => {
-            $.getJSON("/express").done((data) => {
+            $.getJSON("/express/").done((data) => {
                 console.log("heure:", data);
                 $('#year').text(`${data.year}`);
                 $('#month').text(`${data.month}`);
@@ -60,11 +60,13 @@
                 $('#hour').text(`${data.hour}`);
                 $('#minute').text(`${data.minutes}`);
                 $('#second').text(`${data.seconds}`);
+                $('#no-server').text(`${data.noServer}`)
+
             })
 
-            $.getJSON("/express/id").done((data) => {
-                $('#no-server').text(`${data.id}`)
-            });
+            // $.getJSON("/express/id").done((data) => {
+            //     $('#no-server').text(`${data.id}`)
+            // });
         }, 1000);
     }
 
