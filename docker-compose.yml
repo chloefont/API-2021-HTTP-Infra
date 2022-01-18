@@ -2,28 +2,22 @@ version: "3.9"
 
 services:
     static1:
-        build: ./Static_HTTP_server
-        image: static_server:latest
+        image: nginx
         ports:
             - "3005:80"
         volumes:
             - ./Static_HTTP_server/www:/usr/share/nginx/html
-        #    - ./Static_HTTP_server/nginx.conf:/etc/nginx/nginx.conf
     static2:
-        build: ./Static_HTTP_server
-        image: static_server:latest
+        image: nginx
         ports:
             - "3006:80"
         volumes:
             - ./Static_HTTP_server/www:/usr/share/nginx/html
-        #    - ./Static_HTTP_server/nginx.conf:/etc/nginx/nginx.conf
     dynamic1:
         build: ./expressJs
         image: dynamic_server:latest
         ports:
             - "3007:3006"
-        #volumes:
-        #    - ./expressJs/src:/opt/app
         environment:
           - NO_SERVER=1
     dynamic2:
@@ -31,8 +25,6 @@ services:
         image: dynamic_server:latest
         ports:
             - "3008:3006"
-        #volumes:
-        #    - ./expressJs/src:/opt/app
         environment:
           - NO_SERVER=2
     reverseProxy:
@@ -40,5 +32,3 @@ services:
         image: reverse_proxy:latest
         ports:
             - "8081:80"
-        #volumes:
-        #    - ./reverse_proxy/nginx:/etc/nginx/
