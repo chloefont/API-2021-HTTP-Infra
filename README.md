@@ -63,7 +63,7 @@ location / {
 Nous avons ensuite ajouté ces lignes, qui permettent de répartir les charges en appliquant le round-robine. Dynamic1, dynamic2, static1 et static2 sont les noms que nous avons choisi dans le docker-compose.yml. Ils sont ensuite utilisés comme hostname afin de ne pas avoir à écrire les ip des containers manuellement.
 
 Nous avons ainsi deux serveurs dynamiques et deux serveurs statiques. 
-Docker compose offre la possibilité d'intégrer directer du load balancing en ajoutant l'argument `scale ` au fichier de configuration.
+Docker compose offre la possibilité d'intégrer directer du load balancing en ajoutant l'argument `scale ` au fichier de configuration ou l'argument `replicat`.
 
 ```
 upstream dynamic_stream {
